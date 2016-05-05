@@ -1,8 +1,8 @@
 ## Idea
 
-RuuviTag sensor beacon broadcasts Eddystone-URL frame. The URL looks like `http://ruu.vi#wCY5Nd7`. Once user clicks the link, ruu.vi website decodes the value `wCY5Nd7` and shows the sensor values in a human-readable format.
+RuuviTag sensor beacon broadcasts Eddystone-URL frame. The URL looks like `http://ruu.vi#53WG3vW`. Once user clicks the link, ruu.vi website decodes the value `53WG3vW` and shows the sensor values in a human-readable format.
 
-`wCY5Nd7 -> 432635101256`
+`53WG3vW -> 53442571350`
 
 ## Protocol Specification
 

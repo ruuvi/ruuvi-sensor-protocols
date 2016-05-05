@@ -63,7 +63,7 @@
 
             var temp = parseInt(decoded.substr(0, 3)) * 0.1 - 30;
             var humidity = parseInt(decoded.substr(3, 3)) * 0.1;
-            var air_pressure = parseInt(decoded.substr(6, 6)) * 0.1 + 30000;
+            var air_pressure = parseInt(decoded.substr(6, 5)) + 30000;
 
             $("#temperature").text(temp.toFixed(1) + ' °C');
             $("#humidity").text(humidity + ' %');
