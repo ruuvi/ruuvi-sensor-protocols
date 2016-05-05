@@ -6,7 +6,7 @@ RuuviTag sensor beacon broadcasts Eddystone-URL frame. The URL looks like `http:
 
 ## Protocol Specification
 
-The URL is encoded in the firmware of the beacon according these specs. The decoded value contains only characters `[0-9]` and is **minimum of 12 characters** totally. More values can be added in the future.
+The URL is encoded in the firmware of the beacon according these specs. The decoded value contains only characters `0-9` and is **minimum of 12 characters** totally. More values can be added in the future.
 
 Byte offset | Value | Description
 -----|:-----:|-----------
