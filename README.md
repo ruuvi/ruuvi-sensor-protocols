@@ -25,15 +25,15 @@ Byte offset | Value | Description
 
 ### Temperature
 The specification supports temperature values from -30.0 celcius to 69.9 celcius with 0.1 degree increments.
-**Example: `000` = -30C and `999` = 69.9C**
+####Example: `000` = -30C and `999` = 69.9C
 
 ### Humidity
 Humidity readings can be between 0.0% and 99.9% with 0.1% increments.
-**Example: `000` = 0% and `999` = 99.9%**
+####Example: `000` = 0% and `999` = 99.9%
 
 ### Air pressure
 Atmospheric pressure values (Pascal, Pa) can be between 30 000 and 110 000 with 1Pa increments.
-**Example: `000000` = 30 000 Pa and `800000` = 110 000 Pa**
+####Example: `000000` = 30 000 Pa and `800000` = 110 000 Pa
 
 ### Altitude
 
