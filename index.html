@@ -11,8 +11,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-   
-    <script>   
+
+    <script>
     /**
      * ShortURL: Bijective conversion between natural numbers (IDs) and short strings
      *
@@ -59,17 +59,19 @@
             var variables = window.location.hash.substr(1);
             console.log("variables = " + variables);
             var decoded = ShortURL.decode(variables).toString();
-            console.log("decoded = " + decoded);
-            
-            $("#temperature").text(decoded.substr(0, 3));
-            // CALCULATIONS
-            $("#humidity").text(decoded.substr(3, 3));
-            // CALCULATIONS
-            $("#air_pressure").text(decoded.substr(6, 6));
-            // CALCULATIONS
+            console.log("decoded = " + decoded, typeof decoded);
+
+            var temp = parseInt(decoded.substr(0, 3)) * 0.1 - 30;
+            var humidity = parseInt(decoded.substr(3, 3)) * 0.1;
+            var air_pressure = parseInt(decoded.substr(6, 6)) * 0.1 + 30000;
+
+            $("#temperature").text(temp.toFixed(1) + ' °C');
+            $("#humidity").text(humidity + ' %');
+            $("#air_pressure").text(air_pressure.toFixed(1) + ' Pa');
         });
+    } else {
+        window.location.replace("http://ruuvi.com");
     }
-    else { window.location.replace("http://ruuvi.com"); }
     </script>
     <style>
         body {
@@ -86,7 +88,7 @@
               <div class="panel-body">
                 <div id="temperature"></div>
               </div>
-            </div> 
+            </div>
           </div>
           <div class="col-md-2 text-center col-centered">
             <div class="panel panel-default">
@@ -94,7 +96,7 @@
               <div class="panel-body">
                 <div id="humidity"></div>
               </div>
-            </div> 
+            </div>
           </div>
           <div class="col-md-2 text-center ">
             <div class="panel panel-default">
@@ -102,7 +104,7 @@
               <div class="panel-body">
                 <div id="air_pressure"></div>
               </div>
-            </div>               
+            </div>
           </div>
         </div>
     </div>
