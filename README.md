@@ -43,4 +43,4 @@ The altitude can be calculated using temperature and air pressure values. For th
 
 All the files in this repository are licensed under Apache 2.0.
 
-The encoder uses a code snippet called [ShortURL](https://github.com/delight-im/ShortURL) licensed under Apache 2.0 which is not a copyleft license.
+The encoder/decoder uses a code snippet called [ShortURL](https://github.com/delight-im/ShortURL).
