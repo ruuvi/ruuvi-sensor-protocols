@@ -6,7 +6,7 @@ RuuviTag sensor beacon broadcasts Eddystone-URL frame. The URL looks like `http:
 
 ## Protocol Specification
 
-The URL is encoded in the firmware of the beacon according these specs. The decoded value contains only characters `0-9` and is **minimum of 12 characters** totally. More values can be added in the future.
+The URL is encoded in the firmware of the beacon according these specs. The decoded value contains only characters `0-9` and is **minimum of 11 characters** totally. More values can be added in the future.
 
 Offset | Possible value | Description
 -----|:-----:|-----------
@@ -21,7 +21,6 @@ Offset | Possible value | Description
  8 | `0-9` | Atmospheric pressure (3rd number)
  9 | `0-9` | Atmospheric pressure (4th number)
 10 | `0-9` | Atmospheric pressure (5th number)
-11 | `0-9` | Atmospheric pressure (6th number)
 
 ### Temperature
 The specification supports temperature values from -30.0 celcius to 69.9 celcius with 0.1 degree increments.
