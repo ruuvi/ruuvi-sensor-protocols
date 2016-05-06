@@ -2,13 +2,13 @@
 
 This specification is designed to offer simple and flexible way to broadcast different type of sensor values in an [Eddystone-URL](https://github.com/google/eddystone/tree/master/eddystone-url) frame. One possible usage scenario would be:
 
-> [RuuviTag](http://ruuvitag.com) sensor beacon broadcasts an encoded URL address in an Eddystone-URL frame: `http://ruu.vi#53WG3vW`. Once user visit the link, **ruu.vi** website decodes the value `53WG3vW` and shows the data in a human-readable format.
+> [RuuviTag](http://ruuvitag.com) sensor beacon broadcasts an encoded URL address in an Eddystone-URL frame: `http://ruu.vi#53WG3vW`. Once user visits the link, **ruu.vi** website decodes the value `53WG3vW` and shows the data in a human-readable format.
 
 The data part of the URL can be encoded in firmware of the beacon. The most powerful way to encode the data is Base94 because the URL field of the Eddystone-URL has a support for 94 different characters. Normally it's mandatory to encode the data because of maximum length (18 characters) of the [Eddystone-URL](https://github.com/google/eddystone/tree/master/eddystone-url) frame's URL field.
 
 ## Protocol Specification (Data Format 0)
 
-The decoded value is a list of decimal (`0-9`) characters. First number defines what kind of data the field contains.
+The decoded data is a list of decimal (0-9) characters. First number defines what kind of data the field contains.
 
 Offset | Allowed values | Description
 -----|:-----:|-----------
