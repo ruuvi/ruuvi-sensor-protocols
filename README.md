@@ -10,7 +10,7 @@ The data part of the URL can be encoded in firmware of the beacon. The most powe
 
 The decoded value is a list of decimal (`0-9`) characters. First number defines what kind of data the field contains.
 
-Offset | Possible value | Description
+Offset | Allowed values | Description
 -----|:-----:|-----------
  0 | `0-9` | Data format definition (0 = current sensor readings)
  1 | `0-9` | Temperature (1st decimal)
