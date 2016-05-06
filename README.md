@@ -2,7 +2,7 @@
 
 This specification is designed to offer simple and flexible way to broadcast different kind of sensor values in an [Eddystone-URL](https://github.com/google/eddystone/tree/master/eddystone-url) frame. Possible usage scenario would be:
 
-RuuviTag sensor beacon broadcasts an Eddystone-URL frame. The URL could be something like `http://ruu.vi#53WG3vW`. Once user clicks the link, **ruu.vi** website decodes the value `53WG3vW` and shows the data in a human-readable format.
+RuuviTag sensor beacon broadcasts a URL address in an Eddystone-URL frame: `http://ruu.vi#53WG3vW`. Once user visit the link, **ruu.vi** website decodes the value `53WG3vW` and shows the data in a human-readable format.
 
 The Eddystone-URL frame broadcasts the URL using a compressed encoding format, but this specification is only about the sensor readings. 
 
@@ -14,8 +14,8 @@ The decoded value contains only characters (decimals) `0-9`. First decimal defin
 
 Offset | Possible value | Description
 -----|:-----:|-----------
- 0 | `0-9` | Data format. (0 = current sensor readings)
- 1 | `0-9` | Temperature (1nd decimal)
+ 0 | `0-9` | Data format definition (0 = current sensor readings)
+ 1 | `0-9` | Temperature (1st decimal)
  2 | `0-9` | Temperature (2nd decimal)
  3 | `0-9` | Temperature (3rd decimal)
  4 | `0-9` | Humidity (1st decimal)
