@@ -38,7 +38,7 @@ Atmospheric pressure values (Pascal, Pa) can be between 30 000 and 110 000 with 
 ### Altitude
 The altitude can be calculated using temperature and air pressure values. For this reason we won't transfer the altitude data, but it can be shown on website anyways.
 
-### First byte (offset 0)
+### First value (offset 0)
 The first decimal tells the receiver (ie. website) what kind of data the URL has. Only the first one `(0)` is implemented, rest of the choices are proposals.
 
 Decimal | Description
