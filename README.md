@@ -1,16 +1,14 @@
 # Sensor Protocol for Eddystone-URL
 
-This specification is designed to offer simple and flexible way to broadcast different kind of sensor values in an [Eddystone-URL](https://github.com/google/eddystone/tree/master/eddystone-url) frame. Possible usage scenario would be:
+This specification is designed to offer simple and flexible way to broadcast different type of sensor values in an [Eddystone-URL](https://github.com/google/eddystone/tree/master/eddystone-url) frame. One possible usage scenario would be:
 
-RuuviTag sensor beacon broadcasts a URL address in an Eddystone-URL frame: `http://ruu.vi#53WG3vW`. Once user visit the link, **ruu.vi** website decodes the value `53WG3vW` and shows the data in a human-readable format.
+[RuuviTag](http://ruuvitag.com) sensor beacon broadcasts an encoded URL address in an Eddystone-URL frame: `http://ruu.vi#53WG3vW`. Once user visit the link, **ruu.vi** website decodes the value `53WG3vW` and shows the data in a human-readable format.
 
-The Eddystone-URL frame broadcasts the URL using a compressed encoding format, but this specification is only about the sensor readings. 
+The data part of the URL can be encoded in firmware of the beacon. The most powerful way to encode the data is Base94 because the URL field of the Eddystone-URL has a support for 94 different characters. Normally it's mandatory to encode the data because of maximum length (18 characters) of the [Eddystone-URL](https://github.com/google/eddystone/tree/master/eddystone-url) frame's URL field.
 
 ## Protocol Specification (Data Format 0)
 
-The data section of the URL can be encoded in the firmware of the beacon. The most powerful way to encode the data is Base94 because the URL of the Eddystone-URL has a support for 94 different characters.
-
-The decoded value contains only characters (decimals) `0-9`. First decimal defines what kind of data the URL contains.
+The decoded value is a list of decimal (`0-9`) characters. First number defines what kind of data the field contains.
 
 Offset | Possible value | Description
 -----|:-----:|-----------
@@ -28,31 +26,34 @@ Offset | Possible value | Description
 11 | `0-9` | Atmospheric pressure (5th decimal)
 
 ### Temperature
-Values supported: -30°C - 69.9°C with 0.1°C increments.
+Values supported: -30°C - +69.9°C in 0.1°C increments.
 ####Example
 Value | Measured humidity
 ----|-----------
  `000` | -30°C
- `999` | 69.9°C
+ `550` | +25°C
+ `999` | +69.9°C
 
 ### Humidity
-Values supported: 0.0% - 99.9% with 0.1% increments.
+Values supported: 0.0% - 99.9% in 0.1% increments.
 ####Example
 Value | Measured humidity
 ----|-----------
  `000` | 0%
+ `350` | 35.5%
  `999` | 99.9%
 
 ### Atmospheric Pressure
-Values (Pascal, Pa) supported: 30 000Pa - 110 000Pa with 1Pa increments.
+Values supported: 10000Pa - 109999Pa in 1Pa increments.
 ####Example
 Value | Measured humidity
 ----|-----------
- `00000` | 30 000 Pa
- `99999` | 110 000 Pa
+ `00000` | 10000Pa
+ `91325` | 101325Pa (average sea-level pressure)
+ `99999` | 109999Pa
 
 ### Data Format Decimal (Offset 0)
-The first decimal is the most important one because it tells the receiver (ie. website) what kind of data the URL has. Only the first one `(0)` is implemented so far, rest of the choices are proposals.
+The first decimal is the most important one because it tells the receiver (ie. website) what kind of type of data the URL has. Only the first one `(0)` is implemented so far, rest of the choices are preliminary proposals.
 
 Decimal | Description
 ----|-----------
