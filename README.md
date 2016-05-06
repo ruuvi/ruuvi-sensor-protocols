@@ -32,7 +32,7 @@ Humidity readings can be between 0.0% and 99.9% with 0.1% increments.
 
 ### Air pressure
 Atmospheric pressure values (Pascal, Pa) can be between 30 000 and 110 000 with 1Pa increments.
-####Example: `000000` = 30 000 Pa and `800000` = 110 000 Pa
+####Example: `00000` = 30 000 Pa and `80000` = 110 000 Pa
 
 ### Altitude
 
