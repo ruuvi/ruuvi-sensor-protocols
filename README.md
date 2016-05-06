@@ -26,7 +26,7 @@ Offset | Possible value | Description
 11 | `0-9` | Atmospheric pressure (5th decimal)
 
 ### Temperature
-Values supported: -30°C - +69.9°C in 0.1°C increments.
+Values supported: -30°C to +69.9°C in 0.1°C increments.
 ####Example
 Value | Measured humidity
 ----|-----------
@@ -35,7 +35,7 @@ Value | Measured humidity
  `999` | +69.9°C
 
 ### Humidity
-Values supported: 0.0% - 99.9% in 0.1% increments.
+Values supported: 0.0% to 99.9% in 0.1% increments.
 ####Example
 Value | Measured humidity
 ----|-----------
@@ -44,7 +44,7 @@ Value | Measured humidity
  `999` | 99.9%
 
 ### Atmospheric Pressure
-Values supported: 10000Pa - 109999Pa in 1Pa increments.
+Values supported: 10000Pa to 109999Pa in 1Pa increments.
 ####Example
 Value | Measured humidity
 ----|-----------
