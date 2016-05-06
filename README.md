@@ -48,7 +48,7 @@ Values (Pascal, Pa) supported: 30 000Pa - 110 000Pa with 1Pa increments.
 ####Example
 Value | Measured humidity
 ----|-----------
- `0000` | 30 000 Pa
+ `00000` | 30 000 Pa
  `99999` | 110 000 Pa
 
 ### Data Format Decimal (Offset 0)
