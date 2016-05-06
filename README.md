@@ -6,22 +6,22 @@ RuuviTag sensor beacon broadcasts Eddystone-URL frame. The URL looks like `http:
 
 ## Protocol Specification
 
-The URL is encoded in the firmware of the beacon according these specs. The decoded value contains only characters `0-9` and is **minimum of 11 characters** totally. More values can be added in the future.
+The URL is encoded in the firmware of the beacon according these specs. The decoded value contains only characters `0-9` and is **minimum of 12 decimals** totally. More values can be added in the future.
 
 Offset | Possible value | Description
 -----|:-----:|-----------
  0 | `0-9` | 0 = current values
- 1 | `0-9` | Temperature (1nd number)
- 2 | `0-9` | Temperature (2nd number)
- 3 | `0-9` | Temperature (3rd number)
- 4 | `0-9` | Humidity (1st number)
- 5 | `0-9` | Humidity (2nd number) 
- 6 | `0-9` | Humidity (3rd number) 
- 7 | `0-9` | Atmospheric pressure (1st number)
- 8 | `0-9` | Atmospheric pressure (2nd number)
- 9 | `0-9` | Atmospheric pressure (3rd number)
-10 | `0-9` | Atmospheric pressure (4th number)
-11 | `0-9` | Atmospheric pressure (5th number)
+ 1 | `0-9` | Temperature (1nd decimal)
+ 2 | `0-9` | Temperature (2nd decimal)
+ 3 | `0-9` | Temperature (3rd decimal)
+ 4 | `0-9` | Humidity (1st decimal)
+ 5 | `0-9` | Humidity (2nd decimal)
+ 6 | `0-9` | Humidity (3rd decimal)
+ 7 | `0-9` | Atmospheric pressure (1st decimal)
+ 8 | `0-9` | Atmospheric pressure (2nd decimal)
+ 9 | `0-9` | Atmospheric pressure (3rd decimal)
+10 | `0-9` | Atmospheric pressure (4th decimal)
+11 | `0-9` | Atmospheric pressure (5th decimal)
 
 ### Temperature
 The specification supports temperature values from -30.0 celcius to 69.9 celcius with 0.1 degree increments.
@@ -39,9 +39,9 @@ Atmospheric pressure values (Pascal, Pa) can be between 30 000 and 110 000 with 
 The altitude can be calculated using temperature and air pressure values. For this reason we won't transfer the altitude data, but it can be shown on website anyways.
 
 ### First byte (offset 0)
-The first number tells the receiver (ie. website) what kind of info the URL includes. Only the first one (0) is implemented, rest of the choices are proposals.
+The first decimal tells the receiver (ie. website) what kind of data the URL has. Only the first one `(0)` is implemented, rest of the choices are proposals.
 
-Value | Description
+Decimal | Description
 ----|-----------
  0 | Current sensor readings
  1 | Minimum sensor readings
@@ -55,7 +55,6 @@ Value | Description
  9 | For future use
 
 ## License
-
 All the files in this repository are licensed under Apache 2.0.
 
 The encoder/decoder uses a code snippet called [ShortURL](https://github.com/delight-im/ShortURL).
