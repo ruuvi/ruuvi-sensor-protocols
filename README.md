@@ -48,8 +48,8 @@ Values (Pascal, Pa) supported: 30 000Pa - 110 000Pa with 1Pa increments.
 ####Example
 Value | Measured humidity
 ----|-----------
- `000` | 30 000 Pa
- `999` | 110 000 Pa
+ `0000` | 30 000 Pa
+ `99999` | 110 000 Pa
 
 ### Data Format Decimal (Offset 0)
 The first decimal is the most important one because it tells the receiver (ie. website) what kind of data the URL has. Only the first one `(0)` is implemented so far, rest of the choices are proposals.
