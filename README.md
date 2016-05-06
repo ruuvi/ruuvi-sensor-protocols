@@ -10,17 +10,18 @@ The URL is encoded in the firmware of the beacon according these specs. The deco
 
 Offset | Possible value | Description
 -----|:-----:|-----------
- 0 | `0-9` | Temperature (1st number)
- 1 | `0-9` | Temperature (2nd number)
- 2 | `0-9` | Temperature (3rd number)
- 3 | `0-9` | Humidity (1st number)
- 4 | `0-9` | Humidity (2nd number)
- 5 | `0-9` | Humidity (3rd number) 
- 6 | `0-9` | Atmospheric pressure (1st number)
- 7 | `0-9` | Atmospheric pressure (2nd number)
- 8 | `0-9` | Atmospheric pressure (3rd number)
- 9 | `0-9` | Atmospheric pressure (4th number)
-10 | `0-9` | Atmospheric pressure (5th number)
+ 0 | `0-9` | 0 = current values
+ 1 | `0-9` | Temperature (1nd number)
+ 2 | `0-9` | Temperature (2nd number)
+ 3 | `0-9` | Temperature (3rd number)
+ 4 | `0-9` | Humidity (1st number)
+ 5 | `0-9` | Humidity (2nd number) 
+ 6 | `0-9` | Humidity (3rd number) 
+ 7 | `0-9` | Atmospheric pressure (1st number)
+ 8 | `0-9` | Atmospheric pressure (2nd number)
+ 9 | `0-9` | Atmospheric pressure (3rd number)
+10 | `0-9` | Atmospheric pressure (4th number)
+11 | `0-9` | Atmospheric pressure (5th number)
 
 ### Temperature
 The specification supports temperature values from -30.0 celcius to 69.9 celcius with 0.1 degree increments.
@@ -35,8 +36,23 @@ Atmospheric pressure values (Pascal, Pa) can be between 30 000 and 110 000 with 
 ####Example: `00000` = 30 000 Pa and `80000` = 110 000 Pa
 
 ### Altitude
-
 The altitude can be calculated using temperature and air pressure values. For this reason we won't transfer the altitude data, but it can be shown on website anyways.
+
+### First byte (offset 0)
+The first number tells the receiver (ie. website) what kind of info the URL includes. Only the first one (0) is implemented, rest of the choices are proposals.
+
+Value | Description
+----|-----------
+ 0 | Current sensor readings
+ 1 | Minimum sensor readings
+ 2 | Maximum sensor readings
+ 3 | Acceleration
+ 4 | For future use
+ 5 | For future use
+ 6 | For future use
+ 7 | For future use
+ 8 | For future use
+ 9 | For future use
 
 ## License
 
