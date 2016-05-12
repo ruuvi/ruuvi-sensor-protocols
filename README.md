@@ -1,5 +1,7 @@
 # Sensor Protocol for Eddystone-URL
 
+<img src="https://github.com/google/eddystone/blob/master/branding/assets/png/EddyStone_final-01.png" alt="Eddystone logo" width="300px" align="middle">
+
 This specification is designed to offer simple and flexible way to broadcast different type of sensor values in an [Eddystone-URL](https://github.com/google/eddystone/tree/master/eddystone-url) frame. One possible usage scenario would be:
 
 > [RuuviTag](http://ruuvitag.com) sensor beacon broadcasts an encoded URL address in an Eddystone-URL frame: `http://ruu.vi#53WG3vW`. Once user visits the link, **ruu.vi** website decodes the value `53WG3vW` and shows the data in a human-readable format.
