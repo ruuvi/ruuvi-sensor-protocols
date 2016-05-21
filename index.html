@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
+    <script src="http://peterolson.github.com/BigInteger.js/BigInteger.min.js"></script>
     <script>
     /**
      * ShortURL: Bijective conversion between natural numbers (IDs) and short strings
@@ -29,29 +29,30 @@
      *
      * Source: https://github.com/delight-im/ShortURL (Apache License 2.0)
      */
-    var ShortURL = new function() {
+     var ShortURL = new function() {
 
-        var _alphabet = '23456789bcdfghjkmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ-_',
-            _base = _alphabet.length;
+         var _alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&()*+,./:;<=>?@[]^_`{|}~"',
+             _base = _alphabet.length;
 
-        this.encode = function(num) {
-            var str = '';
-            while (num > 0) {
-                str = _alphabet.charAt(num % _base) + str;
-                num = Math.floor(num / _base);
-            }
-            return str;
-        };
+         this.encode = function(bInt) {
+             var str = '';
+             while (bInt.greater(0)) {
+                 str = _alphabet.charAt(bInt.divmod(_base).remainder) + str;
+                 bInt = bInt.divide(_base);
+             }
+             return str;
+         };
 
-        this.decode = function(str) {
-            var num = 0;
-            for (var i = 0; i < str.length; i++) {
-                num = num * _base + _alphabet.indexOf(str.charAt(i));
-            }
-            return num;
-        };
+         this.decode = function(str) {
+             var bInt = bigInt();
+             for (var i = 0; i < str.length; i++) {
+                 bInt = bInt.multiply(_base).add(_alphabet.indexOf(str.charAt(i)));
+             }
+             return bInt;
+         };
+     };
 
-    };
+     console.log(ShortURL);
     </script>
     <script type="text/javascript">
     if(window.location.hash) {
@@ -61,13 +62,19 @@
             var decoded = ShortURL.decode(variables).toString();
             console.log("decoded = " + decoded, typeof decoded);
 
-            var temp = parseInt(decoded.substr(0, 3)) * 0.1 - 30;
-            var humidity = parseInt(decoded.substr(3, 3)) * 0.1;
-            var air_pressure = parseInt(decoded.substr(6, 5)) + 30000;
+            var temp = parseInt(decoded.substr(1, 3)) * 0.1 - 30;
+            var humidity = parseInt(decoded.substr(4, 3)) * 0.1;
+            var air_pressure = parseInt(decoded.substr(7, 5)) + 30000;
+            var time_format = parseInt(decoded.substr(12, 1));
+            var time_elapsed = parseInt(decoded.substr(13, 3));
+
+            var time_formats = ['seconds', 'minutes', 'hours', 'days'];
 
             $("#temperature").text(temp.toFixed(1) + ' °C');
             $("#humidity").text(humidity + ' %');
             $("#air_pressure").text(air_pressure.toFixed(1) + ' Pa');
+            $("#time_elapsed").text(time_elapsed + ' ' + time_formats[time_format]);
+
         });
     } else {
         window.location.replace("http://ruuvi.com");
@@ -82,7 +89,7 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-          <div class="col-md-2 text-center col-md-offset-3">
+          <div class="col-md-2 text-center">
             <div class="panel panel-default">
               <div class="panel-heading">Temperature</div>
               <div class="panel-body">
@@ -90,7 +97,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-2 text-center col-centered">
+          <div class="col-md-2 text-center">
             <div class="panel panel-default">
               <div class="panel-heading">Humidity</div>
               <div class="panel-body">
@@ -103,6 +110,14 @@
               <div class="panel-heading">Air Pressure</div>
               <div class="panel-body">
                 <div id="air_pressure"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 text-center">
+            <div class="panel panel-default">
+              <div class="panel-heading">Time elapsed after last movement</div>
+              <div class="panel-body">
+                <div id="time_elapsed"></div>
               </div>
             </div>
           </div>
