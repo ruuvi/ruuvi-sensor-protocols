@@ -8,15 +8,15 @@ This specification is designed to offer simple and flexible way to broadcast dif
 
 [![Ruuvi Measurements](https://github.com/ruuvi/sensor-protocol-for-eddystone-url/blob/master/images/website.png)](http://ruuvi.com)
 
-The data part of the URL can be encoded in firmware of the beacon. The most powerful way to encode the data is Base94 because the URL field of the Eddystone-URL has a support for 94 different characters. Normally it's mandatory to encode the data because of maximum length (18 characters) of the [Eddystone-URL](https://github.com/google/eddystone/tree/master/eddystone-url) frame's URL field.
+The data part of the URL can be encoded in firmware of the beacon. The most powerful way to encode the data would be Base94 because the URL field of the Eddystone-URL has a support for 94 different characters. Normally it's mandatory to encode the data because of maximum length (18 characters) of the [Eddystone-URL](https://github.com/google/eddystone/tree/master/eddystone-url) frame's URL field. We are using Base91 which has an ~equivalent efficiency.
 
-## Protocol Specification (Data Format 0)
+## Protocol Specification (Data Format 1)
 
-The decoded data is a list of decimal (0-9) characters. First number defines what kind of data the field contains.
+The decoded data is a list of decimal (1-9) characters. First number defines what kind of data the field contains.
 
 Offset | Allowed values | Description
 -----|:-----:|-----------
- 0 | `0-9` | Data format definition (0 = current sensor readings)
+ 0 | `0-9` | Data format definition (1 = current sensor readings)
  1 | `0-9` | Temperature (1st decimal)
  2 | `0-9` | Temperature (2nd decimal)
  3 | `0-9` | Temperature (3rd decimal)
@@ -72,17 +72,17 @@ Value | Measurement
  `3146` | 146 days
 
 ### Data Format Decimal (Offset 0)
-The first decimal is the most important one because it tells the receiver (ie. website) what kind of type of data the URL has. Only the first one `(0)` is implemented so far, rest of the choices are preliminary proposals.
+The first decimal is the most important one because it tells the receiver (ie. website) what kind of type of data the URL has. Only the first one `(1)` is implemented so far.
 
 Decimal | Description
 ----|-----------
- 0 | Current sensor readings
- 1 | Minimum sensor readings
- 2 | Maximum sensor readings
- 3 | Acceleration
+ 1 | Current sensor readings
+ 2 | Reserved for future use
+ 3 | Reserved for future use
  4 | Reserved for future use
  5 | Reserved for future use
  6 | Reserved for future use
  7 | Reserved for future use
  8 | Reserved for future use
  9 | Reserved for future use
+ 
