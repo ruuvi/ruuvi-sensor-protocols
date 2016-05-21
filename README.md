@@ -28,6 +28,10 @@ Offset | Allowed values | Description
  9 | `0-9` | Atmospheric pressure (3rd decimal)
 10 | `0-9` | Atmospheric pressure (4th decimal)
 11 | `0-9` | Atmospheric pressure (5th decimal)
+12 | `0-9` | Time format (0=sec, 1=min, 2=hours, 3=days)
+13 | `0-9` | Time elapsed after last movement (1st decimal)
+14 | `0-9` | Time elapsed after last movement (2nd decimal)
+15 | `0-9` | Time elapsed after last movement (3rd decimal)
 
 ### Temperature
 Values supported: -30°C to +69.9°C in 0.1°C increments.
@@ -55,6 +59,17 @@ Value | Measurement
  `00000` | 10000Pa
  `91325` | 101325Pa (average sea-level pressure)
  `99999` | 109999Pa
+ 
+### Time elapsed after last movement
+Values supported: 0 sec to 999 days in sec/min/hour/day increments.
+####Example
+Value | Measurement
+----|-----------
+ `0000` | 0 secondes
+ `0573` | 573 seconds
+ `1141` | 141 minutes
+ `2038` | 38 hours
+ `3146` | 146 days
 
 ### Data Format Decimal (Offset 0)
 The first decimal is the most important one because it tells the receiver (ie. website) what kind of type of data the URL has. Only the first one `(0)` is implemented so far, rest of the choices are preliminary proposals.
