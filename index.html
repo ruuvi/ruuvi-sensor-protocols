@@ -242,7 +242,7 @@
 
             $("#temperature").text(temp.toFixed(2) + ' °C');
             $("#humidity").text(humidity + ' %');
-            $("#air_pressure").text(air_pressure + ' Pa');
+            $("#air_pressure").text(air_pressure/100 + ' hPa');
             $("#time_elapsed").text(time_elapsed + ' ' + time_formats[0]);
 
         });
