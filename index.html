@@ -1,13 +1,23 @@
-
+<!doctype html>
+<html lang="fi">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<meta charset="UTF-8">
+	<link href='https://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=1" />
+	<meta name="HandheldFriendly" content="true">
+	<meta name="format-detection" content="telephone=no">
+	<title>Ruuvi Weather Station</title>
+	<meta name="author" content="Ruuvi Innovations Ltd">
+	<meta name="description" content="Open the link to see the measurements" />
+	<meta name="author" content="">
+	<meta name="keywords" content="" />
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/ruu-vi-styles.css">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="js/respond.js"></script>
+	<![endif]-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
@@ -50,14 +60,11 @@
               91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91,
               91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91, 91
             ];
-
         var i = 0;
-
         var base91 = {
           encode: function(data) {
             var len = data.length,
                 output = '', ebq = 0, en = 0, ev = 0, j = 0, byte = 0;
-
             if (typeof data === 'string') {
               for (i = 0; i < len; ++i) {
                 byte = data.charCodeAt(i);
@@ -118,13 +125,11 @@
                 }
               }
             }
-
             if (en > 0) {
               output += ENCODING_TABLE[ebq % 91];
               if (en > 7 || ebq > 90)
                 output += ENCODING_TABLE[(ebq / 91) | 0];
             }
-
             return output;
           },
           decode: function(data) {
@@ -132,7 +137,6 @@
                 estimatedSize = ((len / AVERAGE_ENCODING_RATIO) | 0),
                 dbq = 0, dn = 0, dv = -1, i = 0, o = -1, byte = 0,
                 output = new Array(estimatedSize);
-
             if (typeof data === 'string') {
               for (i = 0; i < len; ++i) {
                 byte = data.charCodeAt(i);
@@ -178,17 +182,14 @@
                 }
               }
             }
-
             if (dv !== -1) {
               if (++o >= estimatedSize)
                 output.push(dbq | dv << dn);
               else
                 output[o] = (dbq | dv << dn);
             }
-
             if (o > -1 && o < estimatedSize - 1)
               output = output.slice(0, o + 1);
-
             var ret;
             if (hasNode)
               ret = new Buffer(output);
@@ -198,11 +199,9 @@
                 ret[i] = output[i];
             } else
               ret = output;
-
             return ret;
           }
         };
-
         if (hasNode)
           module.exports = base91;
         else
@@ -220,7 +219,6 @@
               decodedAsHex += n.toString(16) + ' ';
             });
             console.log("decoded as hex: " + decodedAsHex);
-
             /*
             0:   uint8_t     format;          // (0x01 = realtime sensor readings)
             1:   uint8_t     humidity;        // one lsb is 0.5%
@@ -228,7 +226,6 @@
             4-5: uint16_t    pressure;        // (-50kPa)
             6-7: uint16_t    time;            // seconds (now from reset, later maybe from last movement)
             */
-
             var humidity = decoded[1] * 0.5;
             //The bytes are swaped during the encoding, thus read byte 3 as first byte, byte 2 as 2nd
             //Same goes for pressure and time
@@ -237,60 +234,43 @@
             var temp = tempSign === 0 ? uTemp/256.0 : -1 * uTemp/256.0;
             var air_pressure = ((decoded[5] << 8) + decoded[4]) + 50000;
             var time_elapsed = (decoded[7] << 8) + decoded[6];
-
             var time_formats = ['seconds', 'minutes', 'hours', 'days'];
-
-            $("#temperature").text(temp.toFixed(1) + ' °C');
-            $("#humidity").text(humidity + ' %');
-            $("#air_pressure").text(air_pressure/100 + ' hPa');
-            $("#time_elapsed").text(time_elapsed + ' ' + time_formats[0]);
-
+            $("#temperature").text(temp.toFixed(1));
+            $("#humidity").text(humidity);
+            $("#air_pressure").text(air_pressure/100);
+            $("#time_elapsed").text(time_elapsed);
         });
     } else {
         window.location.replace("http://ruuvi.com");
     }
     </script>
-    <style>
-        body {
-            padding-top: 20px;
-    }
-    </style>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-2 text-center">
-            <div class="panel panel-default">
-              <div class="panel-heading">Temperature</div>
-              <div class="panel-body">
-                <div id="temperature"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-2 text-center">
-            <div class="panel panel-default">
-              <div class="panel-heading">Humidity</div>
-              <div class="panel-body">
-                <div id="humidity"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-2 text-center ">
-            <div class="panel panel-default">
-              <div class="panel-heading">Air Pressure</div>
-              <div class="panel-body">
-                <div id="air_pressure"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-2 text-center">
-            <div class="panel panel-default">
-              <div class="panel-heading">Time elapsed after last movement</div>
-              <div class="panel-body">
-                <div id="time_elapsed"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
+	<div class="container">
+		<header class="header">
+			<div class="branding">Ruuvi Innovations Ltd</div>
+			<h1>Measurements</h1>
+		</header>
+		<div class="content">
+			<ul class="measurements">
+				<li class="temperature">
+					<div class="measurement"><h3 id="temperature"></h3></div>
+					<div class="info"><p>Temperature<span>&deg;C</span></p></div>
+				</li>
+				<li class="humidity">
+					<div class="measurement"><h3 id="humidity"></h3></div>
+					<div class="info"><p>Humidity<span>%</span></p></div>
+				</li>
+				<li class="air-pressure">
+					<div class="measurement"><h3 id="air_pressure"></h3></div>
+					<div class="info"><p>Air pressure<span>hPa</span></p></div>
+				</li>
+				<li class="time">
+					<div class="measurement"><h3 id="time_elapsed"></h3></div>
+					<div class="info"><p>Time elapsed<span class="small">Seconds after<br />last movement</span></p></div>
+				</li>
+			</ul>
+		</div>
+	</div>
 </body>
+</html>
