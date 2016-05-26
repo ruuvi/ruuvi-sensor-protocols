@@ -1,0 +1,39 @@
+html, body, div, span, h1, h3, p, ul, li, header {margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; outline: none;}
+html {font-size: 62.5%;}
+html, body {height: 100%;}
+ul {list-style: none;}
+*, *:before, *:after {-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
+
+body {font-family: 'Oswald', sans-serif; font-size: 16px; font-size: 1.6rem; line-height: 24px; line-height: 2.4rem; font-weight: 300; color: #fff; background: url(../images/bg-m.jpg) no-repeat; background-size: cover; background-attachment: fixed;}
+h1 {width: 100%; float: left; font-family: 'Oswald', sans-serif; font-size: 22px; font-size: 2.2rem; line-height: 24px; line-height: 2.4rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; padding: 10px 0; opacity: 0.6; text-align: center;}
+h3 {width: auto; float: left; font-family: 'Open Sans', sans-serif; font-size: 26px; font-size: 2.6rem; line-height: 50px; line-height: 5rem; font-weight: 600; padding: 0 0 0 60px;}
+p {width: auto; float: right; text-align: right; font-family: 'Oswald', sans-serif; font-size: 14px; font-size: 1.4rem; line-height: 24px; line-height: 2.4rem; letter-spacing: 2px; text-transform: uppercase;}
+span {width: 100%; float: left; font-family: 'Open Sans', sans-serif; font-size: 20px; font-size: 2rem; line-height: 26px; line-height: 2.6rem; opacity: 0.6; letter-spacing: 0px; text-transform: none;}
+.small {font-size: 10px; font-size: 1rem; line-height: 13px; line-height: 1.3rem;}
+.container {width: 100%; max-width: 500px; position: relative; overflow: hidden; margin: 0 auto; z-index: 10;}
+.header {width: 100%; float: left; text-align: center;}
+.branding {width: 160px; height: 33px; margin: 40px auto 0 auto; background: url(../svg/fallback/ruuvi-logo.png) center center no-repeat; background-image: url(../svg/ruuvi-logo.svg), none; text-indent: -9999px;}
+.content {width: 100%; float: left;}
+.measurements {width: 100%; float: left; margin: 30px 0; border-bottom: 1px solid #fff; border-bottom: 1px solid rgba(255,255,255,0.6);}
+.measurements li {width: 100%; float: left; display: block; border-top: 1px solid #fff; border-top: 1px solid rgba(255,255,255,0.6); padding: 10px;}
+.temperature {background: url(../svg/fallback/icon-temperature.png) 20px center no-repeat; background-image: url(../svg/icon-temperature.svg), none;}
+.humidity {background: url(../svg/fallback/icon-humidity.png) 25px center no-repeat; background-image: url(../svg/icon-humidity.svg), none;}
+.air-pressure {background: url(../svg/fallback/icon-air-pressure.png) 20px center no-repeat; background-image: url(../svg/icon-air-pressure.svg), none;}
+.time {background: url(../svg/fallback/icon-time.png) 22px center no-repeat; background-image: url(../svg/icon-time.svg), none;}
+.altitude {background: url(../svg/fallback/icon-altitude.png) 20px center no-repeat; background-image: url(../svg/icon-altitude.svg), none;}
+
+@media (min-height: 700px) {
+	.branding {margin: 80px auto 0 auto;}
+	.measurements {margin: 40px 0;}
+}
+
+@media (min-width: 400px) {
+	body {background: url(../images/bg.jpg) no-repeat; background-size: cover; background-attachment: fixed;}
+	h3 {font-size: 30px; font-size: 3rem;}
+	p {font-size: 16px; font-size: 1.6rem;}
+	.measurements li {padding: 20px 10px;}
+}
+
+@media (min-width: 330px) {
+	.measurements h3 {padding: 0 0 0 70px;}
+}
