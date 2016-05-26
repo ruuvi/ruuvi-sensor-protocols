@@ -215,12 +215,8 @@
             var variables = window.location.hash.substr(1);
             console.log("parsed hash = " + variables);
             var decoded = base91.decode(variables);
-            var decodedAsHex = "";
-            decoded.forEach(function (n) {
-              decodedAsHex += n.toString(16) + ' ';
-            });
-            console.log("decoded as hex: " + decodedAsHex);
-
+            console.log(decoded);
+          
             /*
             0:   uint8_t     format;          // (0x01 = realtime sensor readings)
             1:   uint8_t     humidity;        // one lsb is 0.5%
