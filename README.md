@@ -20,8 +20,8 @@ Offset | Allowed values | Description
  1 | `0-200` | Humidity (one lsb is 0.5%, e.g. 128 is 64%)
  2 | `0-127, signed` | Temperature (MSB is sign, next 7 bits are decimal value)
  3 | `0-99` | Temperature (fraction, 1/100.)
- 4 | `0-9` | Pressure (MSB - 50kPa)
- 5 | `0-9` | Pressure (LSB)
+ 4 | `0-255` | Pressure (Most Significant Byte, value\*256 - 50kPa)
+ 5 | `0-255` | Pressure (Least Significant Byte)
 
 ### Temperature
 Values supported: -127.99 °C to +127.99 °C in 0.1 °C increments.
@@ -38,8 +38,8 @@ Values supported: 0.0 % to 100 % in 0.5 % increments.
 Value | Measurement
 ----|-----------
  `000` | 0%
- `350` | 35.5%
- `999` | 99.9%
+ `128` | 64.0%
+ `200` | 100.0%
 
 ### Atmospheric Pressure
 Values supported: 50000 Pa to 115536 Pa in 1 Pa increments.
