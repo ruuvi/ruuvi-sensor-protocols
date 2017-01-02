@@ -6,7 +6,7 @@ This specification is designed to offer simple and flexible way to broadcast dif
 
 > [RuuviTag](http://ruuvitag.com) sensor beacon broadcasts an encoded URL address in an Eddystone-URL frame: `http://ruu.vi#AjAYAMLs`. Once user visits the link, **ruu.vi** website decodes the value `AjAYAMLs` and shows the data in a human-readable format.
 
-[![Ruuvi Measurements](https://github.com/ruuvi/sensor-protocol-for-eddystone-url/blob/master/images/website2.png)](http://ruuvi.com)
+[![Ruuvi Measurements](./images/website2.png)](http://ruuvi.com)
 
 The data part of the URL can be encoded in firmware of the beacon. The most powerful way to encode the data would be Base94 because the URL field of the Eddystone-URL has a support for 94 different characters. Normally it's mandatory to encode the data because of maximum length (18 characters) of the [Eddystone-URL](https://github.com/google/eddystone/tree/master/eddystone-url) frame's URL field. We are using Base91 which has an ~equivalent efficiency.
 
