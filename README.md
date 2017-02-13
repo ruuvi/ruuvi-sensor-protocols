@@ -76,7 +76,7 @@ Values are 2-complement int16_t, MSB first. All channels are identical.
 Value | Measurement
 ----|-----------
  `0xFC 0x17` | -1000 mG
- `0x3 0xE8` | 1000 mG
+ `0x03 0xE8` | 1000 mG
 
 ## Data Format
 The first byte tells the receiver (ie. website) what kind of type of data the packet has.
@@ -85,7 +85,7 @@ Decimal | Description
 ----|-----------
  1 | Historical use, not supported anymore. 
  2 | Eddystone-URL, URL-safe base64 -encoded
- 3 | BLE Manufacturer specific
+ 3 | BLE Manufacturer specific data, all current sensor readings at 1 second interval
  4 | Reserved for future use
  5 | Reserved for future use
  6 | Reserved for future use
