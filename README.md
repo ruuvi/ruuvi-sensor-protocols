@@ -19,8 +19,8 @@ Offset | Allowed values | Description
  0 | 2 | Data format definition (2 = current sensor readings)
  1 | `0 ... 200` | Humidity (one lsb is 0.5%, e.g. 128 is 64%)
  2 | `-127 ... 127, signed` | Temperature (MSB is sign, next 7 bits are decimal value)
- 3 | `0 ... 99` | Temperature (fraction, 1/100.)
- 4 - 5| `0 ... 65535` | Pressure (Most Significant Byte first, value - 50kPa)
+ 3 | `0 ... 0` | Temperature (fraction, 1/100.). Not used, reads always as 0.
+ 4 - 5| `0 ... 65535` | Pressure (Most Significant Byte first, value - 50kPa). Rounded to 1 hPa accuracy.
 
 # Sensor Protocol for Sensor Tag
 The plain Sensor Tag sends the data as Manufacturer specific data in undirected, non-connectable bluetooth advertisement. 
