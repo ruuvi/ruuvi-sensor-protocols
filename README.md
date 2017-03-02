@@ -16,11 +16,12 @@ The decoded data URL parameter is a packet of bytes.
 
 Offset | Allowed values | Description
 -----|:-----:|-----------
- 0 | 2 | Data format definition (2 = current sensor readings)
+ 0 | 4 | Data format definition (4 = current sensor readings)
  1 | `0 ... 200` | Humidity (one lsb is 0.5%, e.g. 128 is 64%)
  2 | `-127 ... 127, signed` | Temperature (MSB is sign, next 7 bits are decimal value)
  3 | `0 ... 0` | Temperature (fraction, 1/100.). Not used, reads always as 0.
  4 - 5| `0 ... 65535` | Pressure (Most Significant Byte first, value - 50kPa). Rounded to 1 hPa accuracy.
+ 6 - 7| `0 ... 65535` | Battery voltage (millivolts). Rounded to 50 mV accuracy
 
 # Sensor Protocol for Sensor Tag
 The plain Sensor Tag sends the data as Manufacturer specific data in undirected, non-connectable bluetooth advertisement. 
@@ -37,9 +38,10 @@ Offset | Allowed values | Description
  2 | `-127 ... 127, signed` | Temperature (MSB is sign, next 7 bits are decimal value)
  3 | `0 ... 99` | Temperature (fraction, 1/100.)
  4 - 5| `0 ... 65535` | Pressure (Most Significant Byte first, value - 50kPa)
- 6-7 | `-32767 ... 32767, signed`  | Acceleration-X (Most Significant Byte)
- 8 - 9 | `-32767 ... 32767, signed`  | Acceleration-Y (Most Significant Byte)
- 10 - 11| `-32767 ... 32767, signed`  | Acceleration-Z (Most Significant Byte)
+ 6-7 | `-32767 ... 32767, signed`  | Acceleration-X (Most Significant Byte first)
+ 8 - 9 | `-32767 ... 32767, signed`  | Acceleration-Y (Most Significant Byte first)
+ 10 - 11| `-32767 ... 32767, signed`  | Acceleration-Z (Most Significant Byte first)
+ 12 - 13| `0 ... 65535` | Battery voltage (millivolts). MSB First
 
 # Data field descriptions
 ## Temperature
@@ -78,15 +80,19 @@ Value | Measurement
  `0xFC 0x17` | -1000 mG
  `0x03 0xE8` | 1000 mG
 
+## Battery voltage
+Values supported: 0 mV to 65536 mV in 1 mV increments, practically 1800 ... 3600 mV . 
+
+ 
 ## Data Format
 The first byte tells the receiver (ie. website) what kind of type of data the packet has.
 
 Decimal | Description
 ----|-----------
  1 | Historical use, not supported anymore. 
- 2 | Eddystone-URL, URL-safe base64 -encoded
+ 2 | Eddystone-URL, URL-safe base64 -encoded, kickstarter edition (no battery voltage)
  3 | BLE Manufacturer specific data, all current sensor readings at 1 second interval
- 4 | Reserved for future use
+ 4 | Eddystone-URL, URL-safe base64 -encoded, with battery voltage.
  5 | Reserved for future use
  6 | Reserved for future use
  7 | Reserved for future use
