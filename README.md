@@ -3,8 +3,8 @@
 <img src="https://github.com/google/eddystone/blob/master/branding/assets/png/EddyStone_final-01.png" alt="Eddystone logo" width="300px" align="middle">
 
 This specification is designed to offer simple and flexible way to broadcast different type of sensor values in an [Eddystone-URL](https://github.com/google/eddystone/tree/master/eddystone-url) frame. One possible usage scenario would be:
-
 > [RuuviTag](http://ruuvitag.com) sensor beacon broadcasts an encoded URL address in an Eddystone-URL frame: `http://ruu.vi#AjAYAMLs`. Once user visits the link, **ruu.vi** website decodes the value `AjAYAMLs` and shows the data in a human-readable format.  Please note that ruu.vi website rounds the data. 
+The website implemetation is online at it's own [github repository](https://github.com/ruuvi/weather-station-serverside).
 
 [![Ruuvi Measurements](./images/website2.png)](http://ruuvi.com)
 
@@ -18,13 +18,13 @@ Offset | Allowed values | Description
 -----|:-----:|-----------
  0 | `0-255` | Data format definition (2 = current sensor readings)
  1 | `0-200` | Humidity (one lsb is 0.5%, e.g. 128 is 64%)
- 2 | `0-127, signed` | Temperature (MSB is sign, next 7 bits are decimal value)
+ 2 | `-127-127, signed` | Temperature (MSB is sign, next 7 bits are decimal value)
  3 | `0-99` | Temperature (fraction, 1/100.)
  4 | `0-255` | Pressure (Most Significant Byte, value\*256 - 50kPa)
  5 | `0-255` | Pressure (Least Significant Byte)
 
 ### Temperature
-Values supported: -127.99 °C to +127.99 °C in 0.1 °C increments.
+Values supported: -127.99 °C to +127.99 °C in 0.01 °C increments.
 ####Example
 Value | Measurement
 ----|-----------
@@ -53,7 +53,7 @@ Value | Measurement
 
 
 ### Data Format (Offset 0)
-The first byte tells the receiver (ie. website) what kind of type of data the URL has. Only the first one `(1)` is implemented so far.
+The first byte tells the receiver (ie. website) what kind of type of data the URL has. Only the second one `(2)` is in official use right now.
 
 Decimal | Description
 ----|-----------
