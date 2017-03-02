@@ -21,7 +21,7 @@ Offset | Allowed values | Description
  2 | `-127 ... 127, signed` | Temperature (MSB is sign, next 7 bits are decimal value)
  3 | `0 ... 0` | Temperature (fraction, 1/100.). Not used, reads always as 0.
  4 - 5| `0 ... 65535` | Pressure (Most Significant Byte first, value - 50kPa). Rounded to 1 hPa accuracy.
- 6 - 7| `0 ... 65535` | Battery voltage (millivolts). Rounded to 50 mV accuracy
+ 6 | `0..255` | Battery voltage (millivolts) / 16, e.g. 128 means 128 * 16 = 2048 mV. Rounded to 64 mV accuracy. NOTE! because of the URL limitation, only 6 most significant bits will be readable. 
 
 # Sensor Protocol for Sensor Tag
 The plain Sensor Tag sends the data as Manufacturer specific data in undirected, non-connectable bluetooth advertisement. 
@@ -81,8 +81,11 @@ Value | Measurement
  `0x03 0xE8` | 1000 mG
 
 ## Battery voltage
-Values supported: 0 mV to 65536 mV in 1 mV increments, practically 1800 ... 3600 mV . 
+### Sensortag
+Values supported: 0 mV to 65536 mV in 1 mV increments, practically 1800 ... 3600 mV. 
 
+### Weather station
+Values supported: 0 mV to 4080 mV in 64 mV increments, practically 1800 ... 3600 mV. 
  
 ## Data Format
 The first byte tells the receiver (ie. website) what kind of type of data the packet has.
