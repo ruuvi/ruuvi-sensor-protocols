@@ -10,7 +10,7 @@ The website implemetation is online at it's own [github repository](https://gith
 
 The data part of the URL can be encoded in firmware of the beacon. The most powerful way to encode the data would be Base94 because the URL field of the Eddystone-URL has a support for 94 different characters. Normally it's mandatory to encode the data because of maximum length (18 characters) of the [Eddystone-URL](https://github.com/google/eddystone/tree/master/eddystone-url) frame's URL field. We are using [URL-safe Base64](https://tools.ietf.org/html/rfc4648#page-7) for support across as many devices as possible.
 
-## Protocol Specification (Data Format 2)
+## Protocol Specification (Data Format 2 and 4)
 
 The decoded data URL parameter is a packet of bytes.
 
@@ -21,7 +21,7 @@ Offset | Allowed values | Description
  2 | `-127 ... 127, signed` | Temperature (MSB is sign, next 7 bits are decimal value)
  3 | `0 ... 0` | Temperature (fraction, 1/100.). Not used, reads always as 0.
  4 - 5| `0 ... 65535` | Pressure (Most Significant Byte first, value - 50kPa). Rounded to 1 hPa accuracy.
- 6 | `0..255` | Battery voltage (millivolts) / 16, e.g. 128 means 128 * 16 = 2048 mV. Rounded to 64 mV accuracy. NOTE! because of the URL limitation, only 6 most significant bits will be readable. 
+ 6 | `0..255` | Random id of tag, only present in format 4. NOTE! because of the URL limitation, only 6 most significant bits will be readable. 
 
 # Sensor Protocol for Sensor Tag
 The plain Sensor Tag sends the data as Manufacturer specific data in undirected, non-connectable bluetooth advertisement. 
