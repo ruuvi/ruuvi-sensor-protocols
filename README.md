@@ -84,8 +84,9 @@ Value | Measurement
 ### Sensortag
 Values supported: 0 mV to 65536 mV in 1 mV increments, practically 1800 ... 3600 mV. 
 
-### Weather station
-Values supported: 0 mV to 4080 mV in 64 mV increments, practically 1800 ... 3600 mV. 
+## Tag ID
+### Weather Station
+Contains a single random base 64 character used to identify tag.
  
 ## Data Format
 The first byte tells the receiver (ie. website) what kind of type of data the packet has.
@@ -95,7 +96,7 @@ Decimal | Description
  1 | Historical use, not supported anymore. 
  2 | Eddystone-URL, URL-safe base64 -encoded, kickstarter edition (no battery voltage)
  3 | BLE Manufacturer specific data, all current sensor readings at 1 second interval
- 4 | Eddystone-URL, URL-safe base64 -encoded, with battery voltage.
+ 4 | Eddystone-URL, URL-safe base64 -encoded, with tag id.
  5 | Reserved for future use
  6 | Reserved for future use
  7 | Reserved for future use
