@@ -77,7 +77,7 @@ Values are 2-complement int16_t, MSB first. All channels are identical.
 ### Example
 Value | Measurement
 ----|-----------
- `0xFC 0x17` | -1000 mG
+ `0xFC 0x18` | -1000 mG
  `0x03 0xE8` | 1000 mG
 
 ## Battery voltage
