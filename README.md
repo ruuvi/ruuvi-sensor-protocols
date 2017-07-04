@@ -28,7 +28,7 @@ The plain Sensor Tag sends the data as Manufacturer specific data in undirected,
 
 ## Protocol Specification (Data Format 3)
 The data is decoded from "Manufacturer Specific Data" -field, for more details please check [this article](https://github.com/ruuvi/ruuvi-sensor-protocols) out.
-Manufacturer ID is 0xFFFF (not specified -  /TODO). 
+Manufacturer ID is 0x0499. 
 The actual data payload is: 
 
 Offset | Allowed values | Description
