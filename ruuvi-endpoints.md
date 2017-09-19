@@ -16,7 +16,7 @@ Changes to endpoints and data formats are possible.
 # Sensor interface
 ## Requirements
 ### Portability
-The sensor interface should be portable to different data transmission layers, i.e. BLE advertisements, BLE mesh, BLE GATT connection, NFC and Wirepas Mesh.
+The sensor interface should be portable to different data transmission layers, i.e. BLE advertisements, BLE mesh, BLE GATT connection, NFC and proprietary protocols.
 
 To fill this requirement, sensor interface must:
   - Fit in smallest available data payload
