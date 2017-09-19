@@ -50,8 +50,8 @@ Values supported: -127.99 °C to +127.99 °C in 0.01 °C increments.
 Value | Measurement
 ----|-----------
  `0x0000` | 0 °C
- `0x8145` | -1.45 °C
- `0x0145` | +1.45 °C
+ `0x8145` | -1.69 °C
+ `0x0145` | +1.69 °C
 
 ## Humidity
 Values supported: 0.0 % to 100 % in 0.5 % increments.
@@ -68,7 +68,7 @@ Values supported: 50000 Pa to 115536 Pa in 1 Pa increments.
 Value | Measurement
 ----|-----------
  `00000` | 50000 Pa
- `41325` | 101325 Pa (average sea-level pressure)
+ `51325` | 101325 Pa (average sea-level pressure)
  `65536` | 115536 Pa
  
 ## Acceleration
