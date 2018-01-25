@@ -10,7 +10,7 @@ The website implemetation is online at it's own [github repository](https://gith
 
 The data part of the URL can be encoded in firmware of the beacon. The most powerful way to encode the data would be Base94 because the URL field of the Eddystone-URL has a support for 94 different characters. Normally it's mandatory to encode the data because of maximum length (18 characters) of the [Eddystone-URL](https://github.com/google/eddystone/tree/master/eddystone-url) frame's URL field. We are using [URL-safe Base64](https://tools.ietf.org/html/rfc4648#page-7) for support across as many devices as possible.
 
-## Protocol Specification (Data Format 2 and 4)
+## Data Format 2 and 4 protocol Specification 
 
 The decoded data URL parameter is a packet of bytes.
 
@@ -22,8 +22,14 @@ Offset | Allowed values | Description
  3 | `0 ... 0` | Temperature (fraction, 1/100.). Not used, reads always as 0.
  4 - 5| `0 ... 65535` | Pressure (Most Significant Byte first, value - 50kPa). Rounded to 1 hPa accuracy.
  6 | `0..255` | Random id of tag, only present in format 4. NOTE! because of the URL limitation, only 6 most significant bits will be readable. 
+ 
+### Data field descriptions
+Please see tables below for [temperature](#temperature-format), [humidity](#humidity) and [pressure](#atmospheric-pressure).
 
-## Protocol Specification (Data Format 3)
+#### Tag ID (only on format 4)
+Contains a single random base 64 character used to identify tag.
+
+## Data Format 3 Protocol Specification
 The data is decoded from "Manufacturer Specific Data" -field, for more details please check [this article](http://www.argenox.com/a-ble-advertising-primer/) out.
 Manufacturer ID is 0x0499. 
 The actual data payload is: 
@@ -41,7 +47,7 @@ Offset | Allowed values | Description
  12 - 13| `0 ... 65535` | Battery voltage (millivolts). MSB First
 
 ### Data field descriptions 
-#### Temperature formats 
+#### Temperature format
 Values supported: -127.99 °C to +127.99 °C in 0.01 °C increments.
 
 _Example_ 
@@ -87,34 +93,12 @@ Value | Measurement
 
 #### Battery voltage
 Values supported: 0 mV to 65536 mV in 1 mV increments, practically 1800 ... 3600 mV. 
-
-#### Tag ID
-Contains a single random base 64 character used to identify tag.
  
 #### Data Format
 The first byte tells the receiver (ie. website) what kind of type of data the packet has.
+Please refer to the [table for details](#data-format)
 
-Decimal | Description
-----|-----------
- 1 | Historical use, not supported anymore. 
- 2 | Eddystone-URL, URL-safe base64 -encoded, kickstarter edition (no battery voltage)
- 3 | BLE Manufacturer specific data, all current sensor readings at 1 second interval. Used by Ruuvi firmware v1.
- 4 | Eddystone-URL, URL-safe base64 -encoded, with tag id. Used by Ruuvi firmwares v1 and v2. 
- 5 | Raw v2, used by Ruuvi firmware v2
- 6 | Reserved for future use
- 7 | Reserved for future use
- 8 | Reserved for future use
- 9 | Reserved for future use
- 10| Reserved for future use
- 11| Reserved for future use
- 12| Reserved for future use
- 13| Reserved for future use
- 14| Reserved for future use
- 15| Reserved for future use
- `16 ... 239`| Reserved for bidirectional communication
- `240 ... 255`| Reserved for custom applications. 
-
-## Protocol Specification (Data Format 5)
+## Data Format 5 Protocol Specification
 This is update to format 3 which increases resolution of temperature and humidity. It also adds BLE power information, activity detection, packet counter. It also adds MAC address of sender for iOS devices. "Not available" constants are also defined.
 
 The data is decoded from "Manufacturer Specific Data" -field, for more details please check [this article](http://www.argenox.com/a-ble-advertising-primer/) out.
@@ -210,7 +194,7 @@ Value | Measurement
 
 #### Movement counter
 Movement counter is one-byte counter which gets triggered when LIS2DH12 give "activity interrupt". 
-The counter will roll over. Movement is deduced by "rate of change"
+The counter will roll over. Movement is deduced by "rate of change". Please note that the highest valid value is 254, and 255 is reserved for the "not available".
 
 _Example_
 
@@ -222,7 +206,8 @@ Value | Measurement
 
 #### Measurement sequence number
 Mesurement sequence number gets incremented by one for every measurement. 
-It can be used to gauge signal quality and packet loss as well as to deduplicated data entries.
+It can be used to gauge signal quality and packet loss as well as to deduplicated data entries. You should note that the measurement sequence refers to data rather than transmission, so you might receive many transmission with the same measurement sequence number.
+Please note that the highest valid value is 65534, and 65535 is reserved for the "not available".
 
 _Example_
 
