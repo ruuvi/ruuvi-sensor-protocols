@@ -45,6 +45,7 @@ Offset | Allowed values | Description
 Values supported: -127.99 °C to +127.99 °C in 0.01 °C increments.
 
 _Example_ 
+
 Value | Measurement
 ----|-----------
  `0x0000` | 0 °C
@@ -55,6 +56,7 @@ Value | Measurement
 Values supported: 0.0 % to 100 % in 0.5 % increments.
 
 _Example_
+
 Value | Measurement
 ----|-----------
  `000` | 0%
@@ -65,6 +67,7 @@ Value | Measurement
 Values supported: 50000 Pa to 115536 Pa in 1 Pa increments.
 
 _Example_
+
 Value | Measurement
 ----|-----------
  `00000` | 50000 Pa
@@ -76,6 +79,7 @@ Values supported: -32000 to 32000 (mG), however the sensor on RuuviTag supports 
 Values are 2-complement int16_t, MSB first. All channels are identical.
 
 _Example_
+
 Value | Measurement
 ----|-----------
  `0xFC 0x18` | -1000 mG
@@ -138,6 +142,7 @@ _Not available_ is signified by largest presentable number for unsigned values, 
 Values supported:  (-163.84 °C to +163.83 °C in 0.005 °C increments.
 
 _Example_ 
+
 Value | Measurement
 ----|-----------
  `0x0000` | 0 °C
@@ -149,6 +154,7 @@ Value | Measurement
 Values supported: 0.0 % to 100 % in 0.0025 % increments.
 
 _Example_
+
 Value | Measurement
 ----|-----------
  `000` | 0%
@@ -160,6 +166,7 @@ Value | Measurement
 Values supported: 50000 Pa to 115536 Pa in 1 Pa increments.
 
 _Example_
+
 Value | Measurement
 ----|-----------
  `00000` | 50000 Pa
@@ -172,6 +179,7 @@ Values supported: -32000 to 32000 (mG), however the sensor on RuuviTag supports 
 Values are 2-complement int16_t, MSB first. All channels are identical.
 
 _Example_
+
 Value | Measurement
 ----|-----------
  `0xFC18` | -1000 mG
@@ -182,6 +190,7 @@ Value | Measurement
 Values supported: 1600 mV to 3647 mV in 1 mV increments, practically 1800 ... 3600 mV.
 
 _Example_
+
 Value | Measurement
 ----|-----------
  `0000` | 1600 mV
@@ -192,6 +201,7 @@ Value | Measurement
 Values supported: -40 dBm to +22 dBm in 2 dBm increments.
 
 _Example_
+
 Value | Measurement
 ----|-----------
  `00` | -40 dBm
@@ -203,6 +213,7 @@ Movement counter is one-byte counter which gets triggered when LIS2DH12 give "ac
 The counter will roll over. Movement is deduced by "rate of change"
 
 _Example_
+
 Value | Measurement
 ----|-----------
  `00` | 0 counts
@@ -214,6 +225,7 @@ Mesurement sequence number gets incremented by one for every measurement.
 It can be used to gauge signal quality and packet loss as well as to deduplicated data entries.
 
 _Example_
+
 Value | Measurement
 ----|-----------
  `00` | 0 counts
