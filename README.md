@@ -114,8 +114,8 @@ Offset | Allowed values | Description
 7-8    | `-32767 ... 32767`  | Acceleration-X (Most Significant Byte first)
 9-10   | `-32767 ... 32767`  | Acceleration-Y (Most Significant Byte first)
 11-12  | `-32767 ... 32767`  | Acceleration-Z (Most Significant Byte first)
-13-14  | `0 ... 2047`, `0 ... 31` | Power info (11+5bit unsigned), first 11bits unsigned is the battery voltage above 1.6V, in millivolts (1.6V to 3.647V range). last 5 bits unsigned is the TX power above -40dBm, in 2dBm steps. (-40dBm to +24dBm range)
-15     | `0 ... 255`| Movement counter (8bit unsigned), incremented by motion detection interrupts from LIS2DH12
+13-14  | `0 ... 2046`, `0 ... 30` | Power info (11+5bit unsigned), first 11bits unsigned is the battery voltage above 1.6V, in millivolts (1.6V to 3.647V range). last 5 bits unsigned is the TX power above -40dBm, in 2dBm steps. (-40dBm to +24dBm range)
+15     | `0 ... 254`| Movement counter (8bit unsigned), incremented by motion detection interrupts from LIS2DH12
 16-17  | `0 ... 65534`| Measurement sequence number (16bit unsigned), each time a measurement is taken, this is incremented by one, used for measurement de-duplication (depending on the transmit interval, multiple packets with the same measurements can be sent, and there may be measurements that never were sent)
 18-23  | `Any valid mac` | 48bit MAC address. 
 
@@ -179,7 +179,7 @@ Value | Measurement
 ----|-----------
  `0000` | 1600 mV
  `1400` | 3000 mV
- `2048` | Invalid / not available
+ `2047` | Invalid / not available
 
 #### Tx Power
 Values supported: -40 dBm to +22 dBm in 2 dBm increments.
@@ -190,7 +190,7 @@ Value | Measurement
 ----|-----------
  `00` | -40 dBm
  `22` | +4 dBm
- `32` | Invalid / not available
+ `31` | Invalid / not available
 
 #### Movement counter
 Movement counter is one-byte counter which gets triggered when LIS2DH12 give "activity interrupt". 
