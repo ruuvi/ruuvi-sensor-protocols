@@ -29,7 +29,7 @@ Please see tables below for [temperature](#temperature-format), [humidity](#humi
 #### Tag ID (only on format 4)
 Contains a single random base 64 character used to identify tag.
 
-## Data Format 3 Protocol Specification
+## Data Format 3 Protocol Specification (RAWv1)
 The data is decoded from "Manufacturer Specific Data" -field, for more details please check [this article](http://www.argenox.com/a-ble-advertising-primer/) out.
 Manufacturer ID is 0x0499. 
 The actual data payload is: 
@@ -98,7 +98,7 @@ Values supported: 0 mV to 65536 mV in 1 mV increments, practically 1800 ... 3600
 The first byte tells the receiver (ie. website) what kind of type of data the packet has.
 Please refer to the [table for details](#data-format)
 
-## Data Format 5 Protocol Specification
+## Data Format 5 Protocol Specification (RAWv2)
 This is update to format 3 which increases resolution of temperature and humidity. It also adds BLE power information, activity detection, packet counter. It also adds MAC address of sender for iOS devices. "Not available" constants are also defined.
 
 The data is decoded from "Manufacturer Specific Data" -field, for more details please check [this article](http://www.argenox.com/a-ble-advertising-primer/) out.
