@@ -42,7 +42,9 @@ Reserved    | 0
 Checksum    | 0
 Salt        | 28
 MAC         | 0xAABBCCDDEEFF
-------------|------
+
+Keys        | Binary
+------------|-------------------
 ID          | 0x0011223344556677
 Password    | "RuuvicomRuuviTag"
 
@@ -53,9 +55,11 @@ DF | T    |  H |  P |B+TX| M  | R  | CH |S | MAC
 08 | 1334 |3F58|C515|48E6|18D1|0000|  00|1C|AABBCCDDEEDD
 
 Encryption key:
+
+Component | Binary
+----------|------------------------------------------------
 ID + salt | 00 11 22 33 44 55 66 77 1C
 password  | 52 75 75 76 69 63 6f 6d 52 75 75 76 69 54 61 67
-----------|------------------------------------------------
 Result    | 52 64 57 45 2d 36 09 1a 4e 75 75 76 69 54 61 67
 
 Encrypted data: `0x48 C1 E8 CD 9A 7D 54 37 3F 48 FF 37 7C EC 8C 4E`
