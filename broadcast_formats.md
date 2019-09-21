@@ -52,31 +52,40 @@ Correct way to parse the data is to identify if there is a manufacturer specific
 from Ruuvi Innovations and then check if the header of the data payload matches Ruuvi data formats.
 
 # Data format 1 
-Lifecycle: Obsolete
+*Lifecycle: Obsolete.*
 
 Data format 1 used base91 encoding to pack data into URL parameter. However it wasn't
 compatible with many browsers and was therefore discontinued
 
 # Data format 2
-Lifecycle: Obsolete
+*Lifecycle: Obsolete.*
+
 Data format 2 was used on Kickstarter devices. It is described in detail [here](./dataformat_04.md).
 The data format was appended with a ID byte on data format 4, otherwise it is identical to data format 4. 
 
 # Data format 3 (also known as RAWv1)
-Lifecycle: In production, primary dataformat in 1.x branch firmware. Will be
+*Lifecycle: In production.*
+
+RAWv1 is the primary dataformat in 1.x branch firmware. Will be
 depreciated in 2.x branch firmware. Primary data format in tags shipped from June 2018 onwards. 
 Described in detail [here](./dataformat_03.md).
 
 # Data format 4
-Lifecycle: Depreciated, will be removed in 2.x branch firmware
+*Lifecycle: Depreciated.*
+
+This data format will be removed in 2.x branch firmware
 Primary data format in RuuviTags shipped before June 2018. Described in detail [here](./dataformat_04.md).
 
 # Data format 5 (also known as RAWv2)
-Lifecycle: Beta testing, will be primary data format in 2.x branch firmware.
-Starts shipping in Q4/2019. Described in detail
+*Lifecycle: Beta testing.*
 
-#Data format 0D (Encrypted environmental data)
-Lifecycle: Proposal, will be implemented in 3.X once specification is agreed. 
+RAWv2 will be primary data format in 2.x branch firmware.
+Starts shipping in Q4/2019. Described in detail [here](./dataformat_05.md)
+
+#Data format 8 (Encrypted environmental data)
+*Lifecycle: Proposal.*
+
+Will be implemented in 3.X once specification is agreed. Proposal is described in detail [here](./dataformat_08.md)
 
 # Unofficial Ruuvi data formats
 

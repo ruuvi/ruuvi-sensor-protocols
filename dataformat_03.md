@@ -1,4 +1,6 @@
 # Data Format 3 Protocol Specification (RAWv1)
+*Lifecycle: In production*
+
 The data is decoded from "Manufacturer Specific Data" -field, for more details please check [this article](http://www.argenox.com/a-ble-advertising-primer/) out.
 Manufacturer ID is 0x0499. 
 The actual data payload is: 
@@ -71,9 +73,10 @@ Values supported: 0 mV to 65536 mV in 1 mV increments, practically 1800 ... 3600
 ## Test vectors
 These test vectors are based on [ruuvitag-sensor](https://github.com/ttu/ruuvitag-sensor/tree/master/tests) project.
 There is no specific value for invalid/not available sensor readings, it is suggested to send `0` if value is not available. 
+The tests are bidirectional, decode-encode results in original raw data. 
+Encode-decode must result in same values with given precision, but floating point rounding differences may occur.
 
-### Decoding
-#### Case: valid data
+### Case: valid data
 Raw binary data: `0x03291A1ECE1EFC18F94202CA0B53`
 
 Field | Value
@@ -87,7 +90,7 @@ Acceleration Y | `-1.726 G`
 Acceleration Z | `0.714 G`
 Voltage     | `2.899 V`
 
-#### Case: maximum values
+### Case: maximum values
 Raw binary data: `0x03FF7F63FFFF7FFF7FFF7FFFFFFF`
 
 Field | Value
@@ -101,7 +104,7 @@ Acceleration Y | `32.767 G`
 Acceleration Z | `32.767 G`
 Voltage     | `65.535 V`
 
-#### Case: minumum values
+### Case: minimum values
 Raw binary data: `0x0300FF630000FFFFFFFFFFFF0000`
 
 Field | Value
@@ -114,5 +117,3 @@ Acceleration X | `-32.767 G`
 Acceleration Y | `-32.767 G`
 Acceleration Z | `-32.767 G`
 Voltage     | `0.000 V`
-
-#### Encoding: Todo
