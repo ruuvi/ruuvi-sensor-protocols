@@ -67,7 +67,7 @@ The data format was appended with a ID byte on data format 4, otherwise it is id
 *Lifecycle: In production.*
 
 RAWv1 is the primary dataformat in 1.x branch firmware. Will be
-depreciated in 2.x branch firmware. Primary data format in tags shipped from June 2018 onwards. 
+depreciated in 2.x branch firmware. RAWv1 has been default format in tags shipped from June 2018 onwards. 
 Described in detail [here](./dataformat_03.md).
 
 # Data format 4
