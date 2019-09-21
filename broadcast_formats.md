@@ -82,7 +82,7 @@ Primary data format in RuuviTags shipped before June 2018. Described in detail [
 RAWv2 will be primary data format in 2.x branch firmware.
 Starts shipping in Q4/2019. Described in detail [here](./dataformat_05.md)
 
-#Data format 8 (Encrypted environmental data)
+# Data format 8 (Encrypted environmental data)
 *Lifecycle: Proposal.*
 
 Will be implemented in 3.X once specification is agreed. Proposal is described in detail [here](./dataformat_08.md)
