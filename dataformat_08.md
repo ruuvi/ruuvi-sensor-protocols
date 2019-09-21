@@ -64,5 +64,5 @@ Result    | 52 64 57 45 2d 36 09 1a 4e 75 75 76 69 54 61 67
 
 Encrypted data: `0x48 C1 E8 CD 9A 7D 54 37 3F 48 FF 37 7C EC 8C 4E`
 
-Complete message: `0x08 48 C1 E8 CD 9A 7D 54 37 3F 48 FF 37 7C EC 8C 4E 1C AA BB CC DD EE DD
+Complete message: `0x08 48 C1 E8 CD 9A 7D 54 37 3F 48 FF 37 7C EC 8C 4E 1C AA BB CC DD EE DD`
 
