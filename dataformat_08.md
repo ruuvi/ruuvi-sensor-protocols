@@ -37,6 +37,7 @@ Humidity    | 40.54 RH-%
 Pressure    | 100453 Pa
 Battery     | 2.765 V
 TX Power    | +4 dBm
+Movement    | 15
 Measurement | 6353
 Reserved    | 0
 Checksum    | 0
@@ -50,9 +51,9 @@ Password    | "RuuvicomRuuviTag"
 
 Unencrypted binary: 
 
-DF | T    |  H |  P |B+TX| M  | R  | CH |S | MAC
----|------|----|----|----|----|----|----|--|------------
-08 | 1334 |3F58|C515|48E6|18D1|0000|  00|1C|AABBCCDDEEDD
+DF | T    |  H |  P |B+TX|C | M  | R      |CH|S | MAC
+---|------|----|----|----|--|----|--------|--|--|------------
+08 | 1334 |3F58|C515|48E6|0F|18D1|00000000|00|1C|AABBCCDDEEDD
 
 Encryption key:
 
@@ -62,7 +63,11 @@ ID + salt | 00 11 22 33 44 55 66 77 1C
 password  | 52 75 75 76 69 63 6f 6d 52 75 75 76 69 54 61 67
 Result    | 52 64 57 45 2d 36 09 1a 4e 75 75 76 69 54 61 67
 
-Encrypted data: `0x48 C1 E8 CD 9A 7D 54 37 3F 48 FF 37 7C EC 8C 4E`
+Encrypted data: `0xD6 B4 A8 44 F8 BD 36 81 E1 E7 EF 65 AC 16 A6 B4`
 
-Complete message: `0x08 48 C1 E8 CD 9A 7D 54 37 3F 48 FF 37 7C EC 8C 4E 1C AA BB CC DD EE DD`
+Complete message
+
+DF | T  |  H |  P |B+TX|C |M   | R      |CH|S | MAC
+---|----|----|----|----|--|----|--------|--|--|------------
+08 |D6B4|A844|F8BD|3681|E1|E7EF|65AC16A6|B4|1C|AABBCCDDEEDD
 
