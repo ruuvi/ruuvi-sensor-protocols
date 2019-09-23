@@ -84,12 +84,12 @@ Format 4 was the primary data format in RuuviTags shipped before June 2018. It i
 **Lifecycle: Beta testing.**
 
 RAWv2 will be primary data format in 2.x branch firmware.
-It is scheduled to start shipping in Q4/2019. Format is described in detail [here](./dataformat_05.md)
+It is scheduled to start shipping in Q4/2019. Format is described in detail [here](./dataformat_05.md).
 
 # Data format 8 (Encrypted environmental data)
 **Lifecycle: Proposal.**
 
-Encrypted data format will be based on manufacturer specific data. It will be implemented in 3.X once specification is agreed. Proposal is described in detail [here](./dataformat_08.md)
+Encrypted data format will be based on manufacturer specific data. It will be implemented in 3.X once specification is agreed. Proposal is described in detail [here](./dataformat_08.md).
 
 # Unofficial Ruuvi data formats
 **Lifecycle: In production**
