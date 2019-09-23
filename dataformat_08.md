@@ -47,7 +47,7 @@ MAC         | 0xAABBCCDDEEFF
 Keys        | Binary
 ------------|-------------------
 ID          | 0x0011223344556677
-Password    | "RuuvicomRuuviTag"
+Password    | 0x5275757669636f6d5275757669546167 _"RuuvicomRuuviTag"_
 
 Unencrypted binary: 
 
