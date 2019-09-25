@@ -28,6 +28,12 @@ Offset | Allowed values | Description
 The encryption key is formed from 64-bit tag ID, 8 bit encryption salt and a static password with length of 16 bytes by appending
 salt to ID and XORing the 9 bytes with 9 first bytes of password
 
+## Invalid values
+If a value cannot be determined for any reason, a special invalid value is sent. 
+For unsigned values the invalid value is largest presentable number, for example `0xFFFF`
+and for signed values the invalud value is smallest presentable number, for example `0x8000`.
+Invalid values should be treated as NULL, NAN, NONE or similar by the parser.
+
 ## Example
 
 Data        | Value
@@ -71,3 +77,4 @@ DF | T  |  H |  P |B+TX|C   |M   | R    |CH|S | MAC
 ---|----|----|----|----|----|----|------|--|--|------------
 08 |9E49|ED77|4503|2DF5|D2CC|6E2A|304720|7B|1C|AABBCCDDEEDD
 
+## TODO: Test vectors
