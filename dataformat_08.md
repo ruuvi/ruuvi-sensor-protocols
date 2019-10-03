@@ -5,7 +5,7 @@ The goal of encrypted firmware is to protect users of Ruuvi Dongle and Ruuvi Nod
 snooping on their environmental data or triggering false alerts such as "freezer is melting" by sending spoofed data. 
 
 The encryption uses nRF52-builtin AES128 encryption in Elctronic Codebook (ECB) mode. Data to be encrypted is
-temprature, humidity, pressure, voltage, TX power, measurement count and movement counts. Additionally to protect against replay attacks the encrypted data contains a 16-bit measurement sequence counter and unencrypted data contains a random 8-bit nonce.
+temprature, humidity, pressure, voltage, TX power, measurement count and movement counts. The measurement sequence counter protects against replay attacks.
 All measurements where encrypted data and nonce are equal can be considred duplicates.
 
 Data format has an unencrypted header, 16 bytes of AES-128 encrypted data, 1 byte nonce and 6 bytes long MAC address for iOS devices.
@@ -17,7 +17,7 @@ Offset | Allowed values | Description
 3-4    | `0 ... 40 000`  | Humidity (16bit unsigned) in 0.0025% (0-163.83% range, though realistically 0-100%).
 5-6    | `0 ... 65534` |   Pressure (16bit unsigned) in 1 Pa units, with offset of -50 000 Pa.
 7-8    | `0 ... 2046`, `0 ... 30` | Power info (11+5bit unsigned), first 11 bits is the battery voltage above 1.6V, in millivolts (1.6V to 3.646V range). Last 5 bits unsigned are the TX power above -40dBm, in 2dBm steps. (-40dBm to +20dBm range). 
-9-10   | `0 ... 65534`| Movement counter (8 bit unsigned), incremented by motion detection interrupts from accelerometer
+9-10   | `0 ... 65534`| Movement counter (16 bit unsigned), incremented by motion detection interrupts from accelerometer
 11-12  | `0 ... 65534`| Measurement sequence number (16 bit unsigned), each time a measurement is taken, this is incremented by one, used for measurement de-duplication. Depending on the transmit interval, multiple packets with the same measurements can be sent, and there may be measurements that never were sent.
 13-15  | `Any`| Reserved for future use.
 16     | `0 ... 255` | CRC8, used to check for correct decryption.
