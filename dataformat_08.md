@@ -19,9 +19,8 @@ Offset | Allowed values | Description
 7-8    | `0 ... 2046`, `0 ... 30` | Power info (11+5bit unsigned), first 11 bits is the battery voltage above 1.6V, in millivolts (1.6V to 3.646V range). Last 5 bits unsigned are the TX power above -40dBm, in 2dBm steps. (-40dBm to +20dBm range). 
 9-10   | `0 ... 65534`| Movement counter (16 bit unsigned), incremented by motion detection interrupts from accelerometer
 11-12  | `0 ... 65534`| Measurement sequence number (16 bit unsigned), each time a measurement is taken, this is incremented by one, used for measurement de-duplication. Depending on the transmit interval, multiple packets with the same measurements can be sent, and there may be measurements that never were sent.
-13-15  | `Any`| Reserved for future use.
-16     | `0 ... 255` | CRC8, used to check for correct decryption.
-17     | `0 ... 255` | Nonce. Added to encryption key.
+13-16  | `Any`| Reserved for future use.
+17     | `0 ... 255` | CRC8, used to check for correct decryption.
 18-23  | `Any valid MAC` | 48bit MAC address. 
 
 The encryption key is formed from 64-bit tag ID, 8 bit encryption nonce and a static password with length of 16 bytes by appending
@@ -45,8 +44,7 @@ TX Power    | +4 dBm
 Movement    | 15
 Measurement | 6353
 Reserved    | 0
-Checksum    | [224](https://crccalc.com/?crc=13343F58C51548E6000F18D1000000&method=crc8&datatype=hex&outtype=hex)
-Nonce       | 28
+Checksum    | [174](https://crccalc.com/?crc=13343F58C51548E6000F18D100000000&method=crc8&datatype=hex&outtype=hex)
 MAC         | 0xAABBCCDDEEFF
 
 Keys        | Binary
@@ -56,24 +54,24 @@ Password    | 0x5275757669636f6d5275757669546167 _"RuuvicomRuuviTag"_
 
 Unencrypted binary: 
 
-DF | T    |  H |  P |B+TX|C   | M  | R    |CH|N | MAC
----|------|----|----|----|----|----|------|--|--|------------
-08 | 1334 |3F58|C515|48E6|000F|18D1|000000|E0|1C|AABBCCDDEEDD
+DF | T    |  H |  P |B+TX|C   | M  | R      |CH| MAC
+---|------|----|----|----|----|----|--------|--|------------
+08 | 1334 |3F58|C515|48E6|000F|18D1|000000E0|1C|AABBCCDDEEDD
 
 Encryption key:
 
 Component | Binary
 ----------|------------------------------------------------
-ID + nonce| 00 11 22 33 44 55 66 77 1C
+ID        | 00 11 22 33 44 55 66 77
 password  | 52 75 75 76 69 63 6f 6d 52 75 75 76 69 54 61 67
-Result    | 52 64 57 45 2d 36 09 1a 4e 75 75 76 69 54 61 67
+Result    | 52 64 57 45 2d 36 09 1a 52 75 75 76 69 54 61 67
 
-Encrypted data: [`0x9E49ED7745032DF5D2CC6E2A3047207B`](http://extranet.cryptomathic.com/aescalc/index?key=52+64+57+45+2d+36+09+1a+4e+75+75+76+69+54+61+67&iv=00000000000000000000000000000000&input=13343F58C51548E6000F18D1000000E0&mode=ecb&action=Encrypt&output=)
+Encrypted data: [`0x43825B56324FE019C4BD4D6D3CECAC6E`](http://extranet.cryptomathic.com/aescalc/index?key=526457452D36091A5275757669546167&iv=00000000000000000000000000000000&input=13343F58C51548E6000F18D100000000&mode=ecb&action=Encrypt&output=9E49ED7745032DF5D2CC6E2A3047207B)
 
 Complete message:
 
-DF | T  |  H |  P |B+TX|C   |M   | R    |CH|N | MAC
----|----|----|----|----|----|----|------|--|--|------------
-08 |9E49|ED77|4503|2DF5|D2CC|6E2A|304720|7B|1C|AABBCCDDEEDD
+DF | T  |  H |  P |B+TX|C   |M   | R      |CH| MAC
+---|----|----|----|----|----|----|--------|--|------------
+08 |4382|5B56|324F|E019|C4BD|4D6D|3CECAC6E|1C|AABBCCDDEEDD
 
 ## TODO: Test vectors
