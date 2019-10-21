@@ -105,7 +105,7 @@ Acceleration Z | `32.767 G`
 Voltage     | `65.535 V`
 
 ### Case: minimum values
-Raw binary data: `0x0300FF630000FFFFFFFFFFFF0000`
+Raw binary data: `0x0300FF6300008001800180010000`
 
 Field | Value
 ------|------
