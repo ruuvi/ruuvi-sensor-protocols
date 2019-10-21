@@ -43,7 +43,7 @@ _Example_
 Value | Measurement
 ----|-----------
  `000` | 0%
- `10010` | 25.050%
+ `10010` | 25.025%
  `40000` | 100.0%
  `65535` | Invalid / not available
 
@@ -150,7 +150,7 @@ Field | Value
 Data format | `5`
 Temperature | `163.835 C`
 Pressure    | `115534`
-Humidity    | `163.8375 RH-%`
+Humidity    | `163.8350 RH-%`
 Acceleration X | `32.767 G`
 Acceleration Y | `32.767 G`
 Acceleration Z | `32.767 G`
@@ -161,7 +161,7 @@ Measurement Sequence | `65534`
 MAC | `CB B8 33 4C 88 4F`
 
 ### Case: minimum values
-Raw binary data: `0x05FFFE00000000FFFEFFFEFFFE0000000000CBB8334C884F`
+Raw binary data: `0x05FFFE000000008001800180010000000000CBB8334C884F`
 
 Field | Value
 ------|------
