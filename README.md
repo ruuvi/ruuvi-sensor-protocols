@@ -23,7 +23,7 @@ The broadcasted data formats are described in details on their [own page](./broa
 ## BLE GATT Connection
 *Lifecycle: Alpha*
 
-For some usecases the broadcasted data is not optimal. One such example is reading logs
+For some use cases the broadcasted data is not optimal. One such example is reading logs
 off the devices. A log can have thousands of datapoints, and broadcasting them when there are
 no listeners would waste energy and bandwidth. Larger blocks of data where reception of every data packet 
 is important are transferred primarly via BLE GATT. 
@@ -35,12 +35,12 @@ application layer is described at the page [gatt formats](./gatt_formats.md).
 *Lifecycle: In production*
 
 RuuviTags have NFC tag capablity. This is used for identifying a specific tag and returning
-any sensitive information to user, as NFC read practically requires physicall access to the tag.
-NFC has 4 UTF-8 encoded text fields:
- - id: 8 bytes which are cryptographically securely generated random numbers, used as a tag identifier.
- - ad: MAC address of the beacon.
- - SW: Firmware version, for example 2.5.7
- - dt: Other data, empty by default.
+any sensitive information to user, as NFC read requires physical access to the tag.
+NFC reports 4 UTF-8 encoded text fields:
+ - ID: 8 bytes which are cryptographically securely generated random numbers, used as a tag identifier.
+ - MAC : MAC address of the beacon.
+ - SW: Firmware version, for example v3.28.13
+ - null: null.
 
 ## Real-Time Transfer
 *Lifecycle: Alpha*
