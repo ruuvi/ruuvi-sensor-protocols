@@ -39,8 +39,8 @@ any sensitive information to user, as NFC read requires physical access to the t
 NFC reports 4 UTF-8 encoded text fields:
  - ID: 8 bytes which are cryptographically securely generated random numbers, used as a tag identifier.
  - MAC : MAC address of the beacon.
- - SW: Firmware version, for example v3.28.13
- - null: null.
+ - SW: Firmware version, for example 2.5.9
+ - Data: null.
 
 ## Real-Time Transfer
 *Lifecycle: Alpha*
