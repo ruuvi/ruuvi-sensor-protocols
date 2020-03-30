@@ -1,5 +1,5 @@
 ## Data Format 2 and 4 protocol specification (URL)
-*Lifecycle: Deprecated*
+*Lifecycle: Obsolete*
 
 The data is packed in [Eddystone URL](https://developers.google.com/beacons/eddystone) 
 with a base of https://ruu.vi/# and 9 [URL-safe base64](https://en.wikipedia.org/wiki/Base64#URL_applications) characters. 
