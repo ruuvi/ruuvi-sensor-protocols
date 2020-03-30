@@ -1,5 +1,5 @@
 # Data Format 3 Protocol Specification (RAWv1)
-*Lifecycle: In production*
+*Lifecycle: Deprecated*. Use Data Format 5 instead.
 
 The data is decoded from "Manufacturer Specific Data" -field, for more details please check [this article](http://www.argenox.com/a-ble-advertising-primer/) out.
 Manufacturer ID is 0x0499. 
