@@ -1,5 +1,5 @@
 ## Data Format 5 Protocol Specification (RAWv2)
-*Lifecycle: Beta testing* 
+*Lifecycle: In Production* 
 
 The data is decoded from "Manufacturer Specific Data" -field, for more details please check [this article](http://www.argenox.com/a-ble-advertising-primer/) out.
 Manufacturer ID is 0x0499. 
