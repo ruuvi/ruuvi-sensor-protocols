@@ -1,6 +1,6 @@
 # Migration
 
-Please go to docs.ruuvi.com for up-to-date information, this repository is online only for reference. 
+Please go to [docs.ruuvi.com](https://docs.ruuvi.com) for up-to-date information, this repository is online only for reference. 
 
 # Ruuvi sensor protocols
 Communication interfaces between Ruuvi devices and ouside world are decribed here. 
